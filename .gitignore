@@ -1,0 +1,4 @@
+#ignoring apk folders
+malware/
+static_malware/
+benignware/
