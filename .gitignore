@@ -2,3 +2,5 @@
 malware/
 static_malware/
 benignware/
+
+.~lock.*
