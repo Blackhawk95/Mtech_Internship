@@ -88,7 +88,7 @@ class MLP_NN(object):
                 self.wi[i][j] -= lr * change + self.ci[i][j]
                 self.ci[i][j] = change
 
-        #calculate error
+        #calculate MSE error
         error = 0.0
         for k in range(len(targets)):
             error += 0.5 * (targets[k] - self.ao[k]) ** 2
@@ -104,7 +104,7 @@ class MLP_NN(object):
                 self.FF(inputs)
                 error = self.backProp(targets,lr)
                 if j % 1000 == 0:
-                    print ('error %-.5f' % error)
+                    print ('error ', error,)
 
     def predict(self,X):
         predictions = []
@@ -112,12 +112,32 @@ class MLP_NN(object):
             predictions.append(self.FF(p))
         return predictions
 
-    def print_weight(self):
-        with open('outfile_input', 'wb') as fp1:
-            pickle.dump(self.wi, fp1)
-
-        with open('outfile_output', 'wb') as fp2:    
-            pickle.dump(self.wo, fp2)
+    def print_weight(self,weight_name_in,weight_name_out,header_name_in,header_name_out):
+        fi = open(header_name_in,"w+")
+        xi = "float " + str(weight_name_in)+ "={ "
+        for i in self.wi:
+            xi = xi + "{"
+            for j in i:
+                xi = xi + str(j) + ","
+            xi = xi[:-1]
+            xi = xi + "}, "
+        xi = xi[:-2]
+        xi = xi + " };"
+        fi.write(xi)
+        fi.close()
+        #for outheader - to create {{.,...,.},...,{.,...,.}}
+        fo = open(header_name_out,"w+")
+        xo = "float " + str(weight_name_out)+ "={ "
+        for i in self.wo:
+            xo = xo + "{"
+            for j in i:
+                xo = xo + str(j) + ","
+            xo = xo[:-1]
+            xo = xo + "}, "
+        xo = xo[:-2]
+        xo = xo + " };"
+        fo.write(xo)
+        fo.close()
 
 #for micro
 file = 'dataset/microdataset.csv'
@@ -152,7 +172,7 @@ X_test = (df_test.values)[:,0:-1]
 Y_test = (df_test.values)[:,-1]
 
 
-NN = MLP_NN(21,11,2)# 21 51 2 : #167 input, 200 hidden and 2 output
+NN = MLP_NN(21,31,2)# 21 51 2 : #167 input, 200 hidden and 2 output
 
 #print(len(X_train[1]))
 
@@ -182,9 +202,9 @@ for a in range(len(Y_cap)):
         else:
             wrong = wrong+1 
 
-print("Accuracy = " + str(correct/(correct+wrong)) + "out of " + str(correct + wrong) + "test data")    
+print("Accuracy = " + str(correct/(correct+wrong)) + " out of " + str(correct + wrong) + "test data")    
 
-#NN.print_weight()
+NN.print_weight("wi[21][11]","wo[11][2]","less_uwin.h","less_uwout.h")
 
 #print(Y_cap)
 

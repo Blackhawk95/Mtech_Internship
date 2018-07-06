@@ -60,7 +60,7 @@ def getPermissions(filename):
     return one_hot_perm_list
 
 
-def getPersmissions_from_csv(csv_file):
+def getPermissions_from_csv(csv_file):
     try:
         df = pd.read_csv(csv_file[0])
     except:
@@ -108,7 +108,7 @@ def test_inp_vec_extractor(perm): #systest
     
 def csv_test_inp(n):
     csv_file = sys.argv[2:]
-    perms, output = getPersmissions_from_csv(csv_file)
+    perms, output = getPermissions_from_csv(csv_file)
     ''' 
     # to print the required values
 

@@ -2,9 +2,9 @@
 #include <math.h>
 #include <time.h>
 #include "input.h"
-/* this is for macro dataset */
-#include "old_uwin.h"
-#include "old_uwout.h"
+/* this is for micro dataset */
+#include "less_uwin.h"
+#include "less_uwout.h"
 #define I 21
 #define H 51
 #define O 2
@@ -56,7 +56,7 @@ int main(){
 
 	float output[1][O];
 
-struct timespec vartime = timer_start();  // begin a timer called 'vartime'
+	struct timespec vartime = timer_start();  // begin a timer called 'vartime'
 
 	//initializing to zero
 	for(i = 0;i< 1;i++)
@@ -85,11 +85,11 @@ struct timespec vartime = timer_start();  // begin a timer called 'vartime'
 			output[i][j] = sigmoid(output[i][j]);
 			//printf("output:%2.5f \n",output[i][j]);
 		}
-long time_elapsed_nanos = timer_end(vartime);
+	long time_elapsed_nanos = timer_end(vartime);
 
     if(output[0][0] > output[0][1])
         printf("0\n");
     else 
         printf("1\n");
-printf("Time taken (nanoseconds): %ld\n", time_elapsed_nanos);
+//printf("Time taken (nanoseconds): %ld\n", time_elapsed_nanos);
 }

@@ -2,8 +2,8 @@
 #include <math.h>
 #include "input.h"
 /* this is for macro dataset */
-#include "uwin.h"
-#include "uwout.h"
+#include "old_uwin.h"
+#include "old_uwout.h"
 #define I 21
 #define H 51
 #define O 2
