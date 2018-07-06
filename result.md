@@ -1,37 +1,44 @@
-# Results and Observations
+# Documentation, Results and Observations
 
 Initially using 161 permissions provided by ADROIT dataset resulted in some form of overfitting ,which was overcome by reducing no of permission to 21 (22 was suggested by the paper, but dataset only had 21 of them). 
 
 
+Base code and understaning of a neural-network for NN.py is from https://databoys.github.io/Feedforward/ 
+
+## Dataset Used :
+*For training and testing* : ADROIT dataset ( 8057 benignware samples and 3417 malware samples (skewed dataset) )
+
+                           https://github.com/alexMyG/ADROIT 
+
+*For Independent testing* : Smaller dataset from Kaggle { 199 benignware and 198 malware }
+
+                          https://www.kaggle.com/xwolf12/datasetandroidpermissions/home
+                          
+                          
+**Attributes choosen as per SigPID paper ( suggested by my friend )**: 
+
+"android.permission.ACCESS_WIFI_STATE", "android.permission.READ_LOGS", "android.permission.CAMERA", "android.permission.READ_PHONE_STATE", "android.permission.CHANGE_NETWORK_STATE", "android.permission.READ_SMS", "android.permission.CHANGE_WIFI_STATE", "android.permission.RECEIVE_BOOT_COMPLETED", "android.permission.DISABLE_KEYGUARD",
+"android.permission.RESTART_PACKAGES", "android.permission.GET_TASKS", "android.permission.SEND_SMS", "android.permission.INSTALL_PACKAGES", "android.permission.SET_WALLPAPER", "android.permission.READ_CALL_LOG", "android.permission.READ_CONTACTS", "android.permission.WRITE_APN_SETTINGS", "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_CONTACTS","com.android.browser.permission.READ_HISTORY_BOOKMARKS", "android.permission.WRITE_SETTINGS"
 
 
-Table
+## Classifier Used :
+
+A simple Neural Network with an input layer(21 input nodes),1 hidden layer(51 hidden nodes) and an output layer(2 output nodes {benignware,malware}).
+
+## Accuracy :
+
+Obtained after training with ADROIT dataset on test data with train_data:test_data split of 70:30 is *89.59%*
+
+Obtained after testing with Kaggle dataset- 77/198 malwares where detected and 173/199 benignwares where detected correctly, leading to an accuracy of *62.97%*
+
+
+## Table representing computational Improvements
 
 Device | Execution time (us) | Clock | Power (Rough estimate)
 --- | --- | --- | --- 
 Intel® Core™ i7-4770 | 27.379 | 2.280 Ghz | ___
 ARM Cortex™-A9 | 100.61 | 650 Mhz | 1.556 W 
 Custom IP | 53.79 | 100 Mhz |0.238 W
-
-Dataset Used :
-For training and testing : ADROIT dataset { 8057 benignware samples and 3417 malware samples (skewed dataset) } 
-                           https://github.com/alexMyG/ADROIT (They have their dataset and their code on this repo, awesome people)
-                           
-For Independent testing : Smaller dataset from Kaggle { 199 benignware and 198 malware }
-                          https://www.kaggle.com/xwolf12/datasetandroidpermissions/home
-                          
-                          
-Attributes choosen as per SigPID paper ( suggested by my friend ): 
-
-"android.permission.ACCESS_WIFI_STATE", "android.permission.READ_LOGS", "android.permission.CAMERA", "android.permission.READ_PHONE_STATE", "android.permission.CHANGE_NETWORK_STATE", "android.permission.READ_SMS", "android.permission.CHANGE_WIFI_STATE", "android.permission.RECEIVE_BOOT_COMPLETED", "android.permission.DISABLE_KEYGUARD",
-"android.permission.RESTART_PACKAGES", "android.permission.GET_TASKS", "android.permission.SEND_SMS", "android.permission.INSTALL_PACKAGES", "android.permission.SET_WALLPAPER", "android.permission.READ_CALL_LOG", "android.permission.READ_CONTACTS", "android.permission.WRITE_APN_SETTINGS", "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_CONTACTS","com.android.browser.permission.READ_HISTORY_BOOKMARKS", "android.permission.WRITE_SETTINGS"
-
-
-Classifier Used :
-A simple Neural Network with an input layer,1 hidden layer and an output layer
-
-Accuracy obtained after training with ADROIT dataset on test data with train_data:test_data split of 70:30 is 89.59%
-
 
 
 # References
