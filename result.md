@@ -16,9 +16,13 @@ Custom IP | 53.79 | 100 Mhz |0.238 W
 Dataset Used :
 For training and testing : ADROIT dataset { 8057 benignware samples and 3417 malware samples (skewed dataset) } 
                            https://github.com/alexMyG/ADROIT (They have their dataset and their code on this repo, awesome people)
+                           
 For Independent testing : Smaller dataset from Kaggle { 199 benignware and 198 malware }
                           https://www.kaggle.com/xwolf12/datasetandroidpermissions/home
+                          
+                          
 Attributes choosen as per SigPID paper ( suggested by my friend ): 
+
 "android.permission.ACCESS_WIFI_STATE", "android.permission.READ_LOGS", "android.permission.CAMERA", "android.permission.READ_PHONE_STATE", "android.permission.CHANGE_NETWORK_STATE", "android.permission.READ_SMS", "android.permission.CHANGE_WIFI_STATE", "android.permission.RECEIVE_BOOT_COMPLETED", "android.permission.DISABLE_KEYGUARD",
 "android.permission.RESTART_PACKAGES", "android.permission.GET_TASKS", "android.permission.SEND_SMS", "android.permission.INSTALL_PACKAGES", "android.permission.SET_WALLPAPER", "android.permission.READ_CALL_LOG", "android.permission.READ_CONTACTS", "android.permission.WRITE_APN_SETTINGS", "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_CONTACTS","com.android.browser.permission.READ_HISTORY_BOOKMARKS", "android.permission.WRITE_SETTINGS"
 
